@@ -20,6 +20,9 @@ import SessionTime from '../components/dashboard/SessionTime';
 import GridLayout from 'react-grid-layout';
 import { Responsive as ResponsiveGridLayout } from 'react-grid-layout';
 import { CardContent } from '@material-ui/core';
+import StatusPie from '../components/dashboard/StatusPie';
+import IpDrawer from '../components/IpDrawer';
+
 
 
 
@@ -31,24 +34,24 @@ const Dashboard = () => {
         <Container fluid style={{width:'100%'}}>
             
             <Col>
-            <Row>
-                <Col>
-                <Card style={{ paddingLeft:'10px', borderStyle:'solid', borderWidth:'1px'}} >
-                    <Row style={{zoom:"80%", }}>
-                        <IconButton style={{color:'black'}}>
-                                <MdRefresh />
-                            </IconButton>
-                            <IconButton style={{color:'black'}}>
-                                <MdSave />
-                            </IconButton>
-                            <IconButton style={{color:'black'}}>
-                                <MdFilterList />
-                        </IconButton>
-                    </Row>
+            <Row >
+                <Col xs={11}>
+                <Card style={{ padding:'7px 3px 0px 10px', color:'#007FAF'}} >
+                    <h6>Dashboard informations</h6>
+                
                 </Card>
                 </Col>
+
+                <Col xs={1} >
+                
+                    <IpDrawer/>
+               
+                </Col>
             </Row>
+
             <br/>
+            
+
             <Row>
                 <Col xs={3}>
                     <Card>
@@ -68,19 +71,21 @@ const Dashboard = () => {
                 <Col xs={3}>
                     <Card>
                         <CardContent>
-                            Some info   
+                            Some info here  
                         </CardContent>
                     </Card>
                 </Col>
             </Row>
+
             <br/>
+
             <Row>
                 <Col xs={5}>
                     <Row>
                         <Col>
                             <Card >
                                 <CardContent>
-                                    Some info   
+                                    Channel Schedule (Sync/CycleLength/TimeOffset/SwitchInstant)   
                                 </CardContent>
                             </Card>
                         </Col>
@@ -90,24 +95,36 @@ const Dashboard = () => {
                         <Col>
                             <Card >
                                 <CardContent>
-                                    Some info   
+                                LAN (MAC/IP/GATEWAY/Method)   
                                 </CardContent>
                             </Card>
                         </Col>
                     </Row>
-                    
+                    <br/>
+                    <Row>
+                        <Col>
+                            <Card >
+                                <CardContent >
+                                Some info here also ...
+                                </CardContent>
+                            </Card>
+                        </Col>
+                    </Row>
                 </Col>
-                <Col xs={4}>
-                    <Card>
-                        <RadioInfo/>
-                    </Card>
-                </Col>
+
                 <Col xs={3}>
                     <Card>
-                        <IpList/>
+                        <StatusPie/>
+                    </Card>
+                </Col>
+
+                <Col xs={4}>
+                    <Card>
+                    <RadioInfo/>
                     </Card>
                 </Col>
             </Row>
+
             </Col>
 
         </Container>

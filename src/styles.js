@@ -40,7 +40,7 @@ export const useStyles = makeStyles((theme) => ({
         overflowX: 'hidden',
         position: 'fixed',
         height: '100vh',
-        boxShadow: '0px 0px 15px grey'
+        boxShadow: '0px 0px 7px black'
     },
     navigationDrawerCollapse: {
         width: theme.spacing(7)
@@ -84,7 +84,7 @@ export const useStyles = makeStyles((theme) => ({
         justifyContent: 'flex-start',
         paddingTop: 70,
         paddingLeft: 10,
-        background: '#DEDEDE',
+        background: 'white',
         overflowX: 'hidden',
         overflowY: 'hidden',
         height:'100%'

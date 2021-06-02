@@ -41,12 +41,12 @@ const IpList = () => (
                     key={devices.id}
                 >
                     
-                    <TableCell style={{color: 'green', fontSize: '12px'}}>
-                    {devices.ip}
+                    <TableCell style={{color: 'green', fontSize: '16px'}}>
+                    <h6>{devices.ip}</h6>
                     </TableCell>
 
-                    <TableCell style={{color: 'red', fontSize: '12px'}}>
-                    {devices.ip}
+                    <TableCell style={{color: 'red', fontSize: '16px'}}>
+                    <h6>{devices.ip}</h6>
                     </TableCell>
 
                     
@@ -56,7 +56,7 @@ const IpList = () => (
             </TableBody>
             </Table>
         
-        <Box
+        {/*<Box
         style={{
             display: 'flex',
             justifyContent: 'flex-end',
@@ -72,7 +72,8 @@ const IpList = () => (
         >
             View all
         </Button>
-        </Box>
+        </Box> */}
+        
         </div>
 );
 
