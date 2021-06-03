@@ -37,7 +37,7 @@ const Navigation = ({hosts, loading, hasErrors}) => {
 
     useEffect(() => {
         dispatch(fetchHosts(localStorage.getItem('authKey')))
-    }, [dispatch])
+    }, [dispatch]) //!!!!! Dispatching Hosts
 
     const classes = useStyles();
     //const [open, setOpen] = React.useState(true);
