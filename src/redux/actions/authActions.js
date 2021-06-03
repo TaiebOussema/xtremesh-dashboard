@@ -15,11 +15,11 @@ export const getAuthFailure = () => ({
     type: GET_AUTH_FAILURE
 });
 
-export function fetchAuth() {
+export function fetchAuth(user, password) {
     return async (dispatch) => {
         dispatch(getAuth())
         try {
-            const res = await fetch('http://192.168.1.18/zabbix/api_jsonrpc.php', { 
+            const res = await fetch('http://192.168.1.63/zabbix/api_jsonrpc.php', { 
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json-rpc'
@@ -28,8 +28,8 @@ export function fetchAuth() {
                     "jsonrpc": "2.0",
                     "method": "user.login",
                     "params": {
-                        "user": "Admin",
-                        "password": "zabbix"
+                        "user": user,
+                        "password": password
                     },
                     "id": 1,
                     "auth": null

@@ -26,8 +26,6 @@ import IpDrawer from '../components/IpDrawer';
 
 
 
-
-
 const Dashboard = () => {
 
     return (
@@ -37,7 +35,7 @@ const Dashboard = () => {
             <Row >
                 <Col xs={11}>
                 <Card style={{ padding:'7px 3px 0px 10px', color:'#007FAF'}} >
-                    <h6>Dashboard informations</h6>
+                    <h6>Network informations</h6>
                 
                 </Card>
                 </Col>

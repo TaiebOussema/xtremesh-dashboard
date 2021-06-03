@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useEffect } from 'react';
 import clsx from 'clsx';
 
 
@@ -19,18 +19,25 @@ import { Typography, useMediaQuery, useTheme } from '@material-ui/core';
 
 import { useStyles } from '../styles';
 import { useSelector, useDispatch } from 'react-redux';
-import {connect} from 'react-redux';
 
 
 // components
 import MenuItem from './MenuItem';
 import routes from '../routes';
 
-const Navigation = () => {
+import { fetchHosts } from '../redux/actions/hostsActions'
+import {connect} from 'react-redux';
+
+const Navigation = ({hosts, loading, hasErrors}) => {
+
+    
 
     const dispatch = useDispatch();
     const open = useSelector((state) => state.drawer.open)
 
+    useEffect(() => {
+        dispatch(fetchHosts(localStorage.getItem('authKey')))
+    }, [dispatch])
 
     const classes = useStyles();
     //const [open, setOpen] = React.useState(true);
@@ -50,6 +57,15 @@ const Navigation = () => {
         }
     }
 
+    /*let ipAdr = ''
+    try {
+        ipAdr = hosts[2]["interfaces"]["0"]["ip"]
+        console.log(ipAdr)
+    } catch (error) {
+        console.log("Loading...")
+    }*/
+    
+
     return (
         <div>
             <AppBar className= {classes.appBar}>
@@ -57,9 +73,6 @@ const Navigation = () => {
                     <IconButton onClick={toggleNavigation} edge='start' color='inherit' aria-label='Menu'>
                         <MenuIcon />
                     </IconButton>
-                    <Typography color='inherit' component='h1' variant='h6'>
-                        Xtremesh
-                    </Typography>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -105,6 +118,9 @@ const Navigation = () => {
 
 const mapStateToProps = (state) => ({
     open: state.drawer.open,
+    loading: state.hosts.loading,
+    hosts: state.hosts.hosts,
+    hasErrors: state.hosts.hasErrors
 });
 
 export default connect(mapStateToProps)(Navigation)

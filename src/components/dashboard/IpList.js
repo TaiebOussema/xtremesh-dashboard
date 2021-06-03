@@ -1,3 +1,5 @@
+import React , {useEffect } from 'react';
+
 import devices from '../../_mocks_/devices';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 import {
@@ -17,24 +19,47 @@ import {
 } from '@material-ui/core';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
-const IpList = () => (
+import {connect} from 'react-redux';
+import { fetchHosts } from '../../redux/actions/hostsActions'
+import { useSelector, useDispatch } from 'react-redux';
+
+
+
+const IpList = ({hosts, loading, hasErrors}) => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchHosts(localStorage.getItem('authKey')))
+    }, [dispatch]) //!!!!! Dispatching Hosts
+
+    let ipAdr1, ipAdr2, ipAdr3 = ''
+    try {
+        ipAdr1 = hosts[0]["interfaces"]["0"]["ip"]
+        ipAdr2 = hosts[1]["interfaces"]["0"]["ip"]
+        ipAdr3 = hosts[2]["interfaces"]["0"]["ip"]
+        console.log(ipAdr1)
+    } catch (error) {
+        console.log("Loading...")
+    }
+
+ return(
     <div>
         
             <Table>
             <TableHead >
                 {/*<h7>Devices Status</h7 >*/}
                 <TableRow>
-                <TableCell style={{fontSize: '12px'}}>
+                <TableCell style={{fontSize: '16px'}}>
                     UP
                 </TableCell>
                 
-                <TableCell style={{fontSize: '12px'}}>
+                <TableCell style={{fontSize: '16px'}}>
                     Down
                 </TableCell>
     
                 </TableRow>
             </TableHead>
-            <TableBody>
+            {/*<TableBody>
                 {devices.map((devices) => (
                 <TableRow
                     hover
@@ -42,18 +67,25 @@ const IpList = () => (
                 >
                     
                     <TableCell style={{color: 'green', fontSize: '16px'}}>
-                    <h6>{devices.ip}</h6>
+                    <h7>{devices.ip}</h7>
                     </TableCell>
 
                     <TableCell style={{color: 'red', fontSize: '16px'}}>
-                    <h6>{devices.ip}</h6>
+                    <h7>{devices.ip}</h7>
                     </TableCell>
 
                     
 
                 </TableRow>
                 ))}
-            </TableBody>
+                </TableBody>*/}
+                <TableBody>
+                <TableRow>
+                    <TableCell>{ipAdr1}</TableCell>
+                    <TableCell>{ipAdr2}</TableCell>
+                    <TableCell>{ipAdr3}</TableCell>
+                </TableRow>
+                </TableBody>
             </Table>
         
         {/*<Box
@@ -76,5 +108,13 @@ const IpList = () => (
         
         </div>
 );
+}
 
-export default IpList
+const mapStateToProps = (state) => ({
+    open: state.drawer.open,
+    loading: state.hosts.loading,
+    hosts: state.hosts.hosts,
+    hasErrors: state.hosts.hasErrors
+});
+
+export default connect(mapStateToProps)(IpList)

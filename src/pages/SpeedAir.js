@@ -9,7 +9,11 @@ import IconButton from '@material-ui/core/IconButton';
 import DetailsDrawer from '../components/DetailsDrawer';
 
 
+
+
 const SpeedAir = () => {
+
+    
     return (
         <Container fluid style={{width:'100%'}}>
             
@@ -32,7 +36,7 @@ const SpeedAir = () => {
                     <Card>
                         <CardContent>
                             <h6>SpeedAir1 - <Chip label="Up" color="primary" size="small" /></h6>
-                            <p style={{fontSize:'14px'}}>Ip Address: 192.168.1.138</p>
+                            <p style={{fontSize:'14px', color:'grey'}}>Ip Address: 192.168.1.138</p>
                         
                         
                         <div>
@@ -46,7 +50,7 @@ const SpeedAir = () => {
                     <Card>
                         <CardContent>
                             <h6>SpeedAir1 - <Chip label="Up" color="primary" size="small" /></h6>
-                            <p style={{fontSize:'14px'}}>Ip Address: 192.168.1.139</p>
+                            <p style={{fontSize:'14px', color:'grey'}}>Ip Address: 192.168.1.139</p>
                         
                         
                         <div>
@@ -60,7 +64,7 @@ const SpeedAir = () => {
                     <Card>
                         <CardContent>
                             <h6>SpeedAir1 - <Chip label="Down" color="secondary" size="small" /></h6>
-                            <p style={{fontSize:'14px'}}>Ip Address: 192.168.1.111</p>
+                            <p style={{fontSize:'14px', color:'grey'}}>Ip Address: 192.168.1.111</p>
                         
                         
                         <div>
@@ -74,7 +78,7 @@ const SpeedAir = () => {
                     <Card>
                         <CardContent>
                             <h6>SpeedAir1 - <Chip label="Down" color="secondary" size="small" /></h6>
-                            <p style={{fontSize:'14px'}}>Ip Address: 192.168.1.112</p>
+                            <p style={{fontSize:'14px', color:'grey'}}>Ip Address: 192.168.1.112</p>
                         
                         
                         <div>
@@ -95,7 +99,7 @@ const SpeedAir = () => {
                     <Card>
                         <CardContent>
                             <h6>SpeedAir1 - <Chip label="Down" color="secondary" size="small" /></h6>
-                            <p style={{fontSize:'14px'}}>Ip Address: 192.168.1.113</p>
+                            <p style={{fontSize:'14px', color:'grey'}}>Ip Address: 192.168.1.113</p>
                         
                         
                         <div>

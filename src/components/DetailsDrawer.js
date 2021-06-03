@@ -56,8 +56,8 @@ const DetailsDrawer = () => {
 
             <Row>
                 <Col>
-                <Card style={{ paddingLeft:'10px', borderStyle:'solid', borderWidth:'1px', color:'#007FAF'}} >
-                    SpeedAir Devices Details
+                <Card style={{ padding:'10px', color:'navy'}} >
+                     Device data visualisation
                 </Card>
                 </Col>
             </Row>
@@ -69,7 +69,7 @@ const DetailsDrawer = () => {
                 <Col xs={6}>
                     <Card>
                         <CardContent>
-                        SpeedAir2 - Graph Panel here 
+                        2 - Graph Panel here 
                         <VictoryChart minDomain={{ y: 0 }}>
                             <VictoryLine data={""}/>
                         </VictoryChart> 
@@ -79,7 +79,7 @@ const DetailsDrawer = () => {
                 <Col xs={6}>
                     <Card>
                         <CardContent>
-                        SpeedAir4 - Graph Panel here 
+                        4 - Graph Panel here 
                         <VictoryChart minDomain={{ y: 0 }}>
                             <VictoryLine data={""}/>
                         </VictoryChart> 
@@ -96,7 +96,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir1 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        1 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>
@@ -105,7 +105,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir2 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        2 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>
@@ -114,7 +114,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>
@@ -130,7 +130,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir2 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        2 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>
@@ -139,7 +139,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>
@@ -148,7 +148,7 @@ const DetailsDrawer = () => {
                 <Col xs={4}>
                     <Card>
                         <CardContent>
-                        SpeedAir4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
+                        4 - Graph Panel here <VictoryChart minDomain={{ y: 0 }}>
                         <VictoryLine data={""}/>
                         </VictoryChart> 
                         </CardContent>

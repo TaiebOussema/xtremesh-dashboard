@@ -15,11 +15,13 @@ export const getHostsFailure = () => ({
     type: GET_HOSTS_FAILURE
 });
 
-export function fetchHosts() {
+
+
+export function fetchHosts(authKey) {
     return async (dispatch) => {
         dispatch(getHosts())
         try {
-            const res = await fetch('http://192.168.1.18/zabbix/api_jsonrpc.php', { 
+            const res = await fetch('http://192.168.1.63/zabbix/api_jsonrpc.php', { 
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json-rpc'
@@ -38,7 +40,7 @@ export function fetchHosts() {
                       ]
                   },
                     "id": 2,
-                    "auth": "ecd239e8734d6837ae2fa1f8074d3771",
+                    "auth":  authKey 
                   })
                 });
             const data = await res.json();
