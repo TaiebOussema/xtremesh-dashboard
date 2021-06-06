@@ -1,22 +1,11 @@
 import React , {useEffect } from 'react';
+import { Container, Row, Col } from 'react-grid-system';
+import { CardContent } from '@material-ui/core';
+import { Navbar, Nav, Card, Form, FormControl, Button } from 'react-bootstrap';
 
 import devices from '../../_mocks_/devices';
 import PerfectScrollbar from 'react-perfect-scrollbar';
-import {
-  Box,
-  Button,
-  Card,
-  CardHeader,
-  Chip,
-  Divider,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-  Tooltip
-} from '@material-ui/core';
+
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 
 import {connect} from 'react-redux';
@@ -28,90 +17,109 @@ import { useSelector, useDispatch } from 'react-redux';
 const IpList = ({hosts, loading, hasErrors}) => {
     const dispatch = useDispatch();
 
+    let ipObject = {
+        "ip":"",
+        "status":""
+    }
+
+    let upArray = []
+    let downArray = [] //0->UP, 1-> down
+
     useEffect(() => {
         dispatch(fetchHosts(localStorage.getItem('authKey')))
     }, [dispatch]) //!!!!! Dispatching Hosts
 
-    let ipAdr1, ipAdr2, ipAdr3 = ''
-    try {
-        ipAdr1 = hosts[0]["interfaces"]["0"]["ip"]
-        ipAdr2 = hosts[1]["interfaces"]["0"]["ip"]
-        ipAdr3 = hosts[2]["interfaces"]["0"]["ip"]
-        console.log(ipAdr1)
-    } catch (error) {
-        console.log("Loading...")
-    }
+    //console.log(hosts[0]["interfaces"]["0"]["ip"])
+    
+    
+        try {
+            for(let i=0 ; i < hosts.length; i++) {
+                if(hosts[i].snmp_available == 1) {
+                    upArray.push(hosts[i]["interfaces"]["0"]["ip"])
+                } else {
+                    downArray.push(hosts[i]["interfaces"]["0"]["ip"])
+                }
+            }
+    
+            // let ipAdr1 = hosts[0]["interfaces"]["0"]["ip"]
+            // let ipAdr2 = hosts[1]["interfaces"]["0"]["ip"]
+            // let ipAdr3 = hosts[2]["interfaces"]["0"]["ip"]
+           
+        } catch (error) {
+            console.log(error)
+        }
+
+        console.log(upArray)
+
+        const IpArray = [
+            upArray,
+            downArray
+        ]
+            
+    
+    
+        console.log(IpArray)
+
+        const listUp  = upArray.map((ip) => 
+            <div>
+                <Row>
+                    <Col>
+                        <Card style={{color:'green',display:'flex', alignItems:'center'}}>
+                            {ip}
+                        </Card>
+                    </Col>
+                </Row>
+                <br/>
+            </div>
+            
+        )
+
+        const listDown  = downArray.map((ip) => 
+            <div>
+                <Row>
+                    <Col>
+                        <Card style={{color:'red',display:'flex', alignItems:'center'}} >
+                            {ip}
+                        </Card>
+                    </Col>
+                </Row>
+                <br/>
+            </div>
+        )
+        
 
  return(
-    <div>
-        
-            <Table>
-            <TableHead >
-                {/*<h7>Devices Status</h7 >*/}
-                <TableRow>
-                <TableCell style={{fontSize: '16px'}}>
-                    UP
-                </TableCell>
-                
-                <TableCell style={{fontSize: '16px'}}>
-                    Down
-                </TableCell>
-    
-                </TableRow>
-            </TableHead>
-            {/*<TableBody>
-                {devices.map((devices) => (
-                <TableRow
-                    hover
-                    key={devices.id}
-                >
-                    
-                    <TableCell style={{color: 'green', fontSize: '16px'}}>
-                    <h7>{devices.ip}</h7>
-                    </TableCell>
+    <Container fluid style={{width:'100%'}}>
+            
+            <Col >   
+            <p style={{color:'navy',display:'flex', justifyContent:'center'}}>Availability (SNMP)</p>
+            <Row>
+                <Col xs={6}>
+                    <p style={{color:'green',display:'flex', justifyContent:'center'}}>Up</p>
+                </Col>
+                <Col xs={6}>
+                    <p style={{color:'red',display:'flex', justifyContent:'center'}}>Down</p>
+                </Col>
+            </Row>   
+            <Row >
+                {/* map UP here in this Col tag*/}
+               
+                <Col xs={6} >
+                    {listUp}
+                </Col>
 
-                    <TableCell style={{color: 'red', fontSize: '16px'}}>
-                    <h7>{devices.ip}</h7>
-                    </TableCell>
+                {/* map down in this Col tag */}
+                <Col xs={6}>
+                    {listDown}
+                </Col>
+            </Row>
+            </Col>
 
-                    
-
-                </TableRow>
-                ))}
-                </TableBody>*/}
-                <TableBody>
-                <TableRow>
-                    <TableCell>{ipAdr1}</TableCell>
-                    <TableCell>{ipAdr2}</TableCell>
-                    <TableCell>{ipAdr3}</TableCell>
-                </TableRow>
-                </TableBody>
-            </Table>
-        
-        {/*<Box
-        style={{
-            display: 'flex',
-            justifyContent: 'flex-end',
-            p: 2
-        }}
-        >
-        <Button
-            color="primary"
-            endIcon={<ArrowRightIcon />}
-            size="small"
-            variant="text"
-            style={{fontSize: '10px'}}
-        >
-            View all
-        </Button>
-        </Box> */}
-        
-        </div>
+        </Container>
 );
 }
 
 const mapStateToProps = (state) => ({
-    open: state.drawer.open,
     loading: state.hosts.loading,
     hosts: state.hosts.hosts,
     hasErrors: state.hosts.hasErrors

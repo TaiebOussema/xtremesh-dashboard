@@ -15,6 +15,7 @@ import NumberDevices from '../components/dashboard/NumberDevices';
 import TimeRange from '../components/dashboard/TimeRange';
 import RadioInfo from '../components/dashboard/RadioInfo';
 import SessionTime from '../components/dashboard/SessionTime';
+import ClockCard from '../components/dashboard/ClockCard';
 
 
 import GridLayout from 'react-grid-layout';
@@ -69,7 +70,7 @@ const Dashboard = () => {
                 <Col xs={3}>
                     <Card>
                         <CardContent>
-                            Some info here  
+                            <ClockCard/>  
                         </CardContent>
                     </Card>
                 </Col>

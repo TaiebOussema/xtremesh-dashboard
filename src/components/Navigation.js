@@ -39,6 +39,29 @@ const Navigation = ({hosts, loading, hasErrors}) => {
         dispatch(fetchHosts(localStorage.getItem('authKey')))
     }, [dispatch]) //!!!!! Dispatching Hosts
 
+    // const loadState = () => {
+    //     try {
+    //       const serializedState = localStorage.getItem('state');
+    //       if(serializedState === null) {
+    //         return undefined;
+    //       }
+    //       return JSON.parse(serializedState);
+    //     } catch (e) {
+    //       return undefined;
+    //     }
+    //   };
+      
+      const saveState = (state) => {
+        try {
+          const serializedState = JSON.stringify(state);
+          localStorage.setItem('hosts', serializedState);
+        } catch (e) {
+          // Ignore write errors;
+        }
+      };
+
+      saveState(hosts);
+
     const classes = useStyles();
     //const [open, setOpen] = React.useState(true);
 

@@ -19,7 +19,7 @@ const routes = [
     path: "/",
     icon: <AiOutlineDashboard/>,
     activeIcon: <AiFillDashboard/>,
-    component: Dashboard()
+    component: Dashboard
   },
   {
     label: "SpeedAir Panel",

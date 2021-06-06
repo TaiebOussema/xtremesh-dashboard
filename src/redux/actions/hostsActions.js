@@ -21,7 +21,7 @@ export function fetchHosts(authKey) {
     return async (dispatch) => {
         dispatch(getHosts())
         try {
-            const res = await fetch('http://192.168.1.63/zabbix/api_jsonrpc.php', { 
+            const res = await fetch('http://192.168.1.12/zabbix/api_jsonrpc.php', { 
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json-rpc'
@@ -32,11 +32,33 @@ export function fetchHosts(authKey) {
                     "params": {
                       "output": [
                           "hostid",
-                          "host"
+                          "host",
+                          "name",
+                          "status",
+                          "snmp_available",
+                          "description"
                       ],
                       "selectInterfaces": [
-                          "interfaceid",
-                          "ip"
+                          "ip",
+                          "dns",
+                          "port",
+                          "details"
+                      ],
+                      "selectItems" : [
+                          "itemid",
+                          "snmp_oid",
+                          "name",
+                          "key_",
+                          "description",
+                          "delay",
+                          "timeout",
+                          "history",
+                          "status",
+                          "templateid",
+                          "lastclock",
+                          "lastns",
+                          "lastvalue",
+                          "prevvalue"
                       ]
                   },
                     "id": 2,
